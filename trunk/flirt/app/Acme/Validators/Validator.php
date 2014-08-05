@@ -2,14 +2,12 @@
 
 namespace Acme\Validators;
 
-use Validator;
-
 abstract class Validator {
 
     protected $errors;
 
     public function isValid($inputs) {
-        $v = Validator::make($inputs, static::$rules);
+        $v = \Illuminate\Support\Facades\Validator::make($inputs, static::$rules);
 
         if ($v->fails()) {
             $this->errors = $v->messages();
@@ -20,7 +18,7 @@ abstract class Validator {
     }
 
     public function isValidAuth($inputs) {
-        $v = Validator::make($inputs, static::$authRules);
+        $v = \Illuminate\Support\Facades\Validator::make($inputs, static::$authRules);
 
         if ($v->fails()) {
             $this->errors = $v->messages();
