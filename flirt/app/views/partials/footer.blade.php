@@ -18,9 +18,9 @@
         </div>
         <div class="col-7 right">
             <ul>
-<!--                <li>
-                    <a href="{{ URL::to('/bookmark') }}">Bookmark</a>
-                </li>-->
+                <!--                <li>
+                                    <a href="{{ URL::to('/bookmark') }}">Bookmark</a>
+                                </li>-->
                 <li>
                     <a href="{{ URL::to('/faq') }}">FAQ</a>
                 </li>
@@ -39,13 +39,13 @@
             </ul>
             <ul class="social_media">
                 <li>
-                    <a href=""><img src="img/fb.png" alt="Facebook" /></a>
+                    <a href="">{{ HTML::image('assets/img/fb.png') }}</a>
                 </li>
                 <li>
-                    <a href=""><img src="img/linkedin.png" alt="LinkedIn" /></a>
+                    <a href="">{{ HTML::image('assets/img/linkedin.png') }}</a>
                 </li>
                 <li>
-                    <a href=""><img src="img/twitter.png" alt="Twitter" /></a>
+                    <a href="">{{ HTML::image('assets/img/twitter.png') }}</a>
                 </li>
             </ul>
         </div>
