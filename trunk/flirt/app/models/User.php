@@ -14,19 +14,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     protected $table = 'users';
     protected $fillable = array('email', 'firstname', 'lastname', 'password', 'userable_id', 'userable_type');
+
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
     protected $hidden = array('password', 'type');
+
     /**
      * Get the unique identifier for the user.
      *
      * @return mixed
      */
-    public function getAuthIdentifier()
-    {
+    public function getAuthIdentifier() {
         return $this->getKey();
     }
 
@@ -35,8 +36,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @return string
      */
-    public function getAuthPassword()
-    {
+    public function getAuthPassword() {
         return $this->password;
     }
 
@@ -45,8 +45,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @return string
      */
-    public function getRememberToken()
-    {
+    public function getRememberToken() {
         return $this->remember_token;
     }
 
@@ -56,8 +55,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @param  string  $value
      * @return void
      */
-    public function setRememberToken($value)
-    {
+    public function setRememberToken($value) {
         $this->remember_token = $value;
     }
 
@@ -66,8 +64,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @return string
      */
-    public function getRememberTokenName()
-    {
+    public function getRememberTokenName() {
         return 'remember_token';
     }
 
@@ -76,22 +73,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @return string
      */
-    public function getReminderEmail()
-    {
+    public function getReminderEmail() {
         return $this->email;
     }
 
-    public function setPasswordAttribute($pass){
+    public function setPasswordAttribute($pass) {
 
         $this->attributes['password'] = Hash::make($pass);
     }
 
-    public function getFullname()
-    {
-        return $this->firstname." ".$this->lastname;
+    public function getFullname() {
+        return $this->firstname . " " . $this->lastname;
     }
-    public function userable()
-    {
-        return $this->morphTo();
+
+    public function roles() {
+        return $this->belongsToMany('Role', 'user_roles', 'user_id', 'role_id');
     }
+
+    public function hasRole($name) {
+        foreach ($this->roles as $role) {
+            if ($role->name == $name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
