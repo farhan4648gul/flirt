@@ -13,14 +13,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'users';
-    protected $fillable = array('email', 'firstname', 'lastname', 'password', 'userable_id', 'userable_type');
+    protected $fillable = ['username', 'email', 'password', 'dob', 'city_id', 'sex', 'seeking','height','eye_color','hair_color','body_type',
+                            'smoke','flirt_text','flirt_status','coins','status'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = array('password', 'type');
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * Get the unique identifier for the user.
@@ -82,10 +83,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $this->attributes['password'] = Hash::make($pass);
     }
 
-    public function getFullname() {
-        return $this->firstname . " " . $this->lastname;
-    }
-
     public function roles() {
         return $this->belongsToMany('Role', 'user_roles', 'user_id', 'role_id');
     }
@@ -96,7 +93,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                 return true;
             }
         }
-
         return false;
     }
 

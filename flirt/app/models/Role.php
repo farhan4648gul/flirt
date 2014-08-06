@@ -3,9 +3,9 @@
 class Role extends Eloquent {
 
     protected $table = 'roles';
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['role', 'status'];
     protected static $rules = [
-        'name' => 'required|max:20',
+        'role' => 'required|max:20',
         'status' => 'required|digits_between:0,9',
     ];
 
