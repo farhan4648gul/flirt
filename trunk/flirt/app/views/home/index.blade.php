@@ -10,19 +10,22 @@
             </a>
         </div>
         <div class="col-7 right">
-            <form id="login-form" method="post">
+            {{ Form::open(['route' => 'login'])}}
                 <div class="half">
                     <label>Nickname</label>
-                    <input id="login-username" class="required" type="text" name="login-username" tabindex="1">
+                    {{ Form::text('username')}}
+                    {{ $errors->first('username', "<span class='text-danger'><strong>:message</strong></span>")}}
                     <a class="underline" href="http://linu-ks.com/flirt/passwort-vergessen">Passwort vergessen?</a>
                 </div>
                 <div class="half right">
                     <label>Passwort</label>
-                    <input id="login-password" class="required" type="password" name="login-password" tabindex="2">
+                    {{ Form::password('password')}}
+                    {{ $errors->first('password', "<span class='text-danger'><strong>:message</strong></span>")}}
                     <a class="underline" href="http://linu-ks.com/flirt/register">Register</a>
                     <input class="right" name="login-submit" type="submit" value="Anmelden">
                 </div>
-            </form>
+                {{ $errors->first('login_message', "<span class='text-danger'><strong>:message</strong></span>")}}
+            {{ Form::close() }}
         </div>
     </div><!-- content -->
     <div class="content clearfix">

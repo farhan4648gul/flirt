@@ -12,12 +12,12 @@
         {{ HTML::script("assets/js/scripts.js") }}
     </head>
     <body>
-        @include('partials.header')
+        @include('layouts.header')
         <div class="content clearfix">
             <div class="col-12">
                 @yield('content')
             </div>
         </div>
-        @include('partials.footer')
+        @include('layouts.footer')
     </body>
 </html>

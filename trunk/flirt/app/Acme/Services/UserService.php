@@ -11,8 +11,8 @@ class UserService {
         $this->validator = $validator;
     }
 
-    public function make($inputs){
-
+    public function make($inputs)
+    {
         if($this->validator->isValid($inputs))
         {
             $inputs['status'] = true;
@@ -21,7 +21,8 @@ class UserService {
         throw new ValidationException("User validation failed!", $this->validator->getErrors());
     }
 
-    public function check($input){
+    public function check($input)
+    {
         if($this->validator->isValidAuth($input)){
             return true;
         }
