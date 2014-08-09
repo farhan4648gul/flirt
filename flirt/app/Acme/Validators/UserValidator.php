@@ -5,13 +5,12 @@ class UserValidator extends Validator{
 
     protected static $rules = array(
         'email' => 'required|email|unique:users,email',
-        'password' => 'required',
-        'firstname' => 'required',
-        'lastname' => 'required'
+        'username' => 'required',
+        'password' => 'required'
     );
 
     protected static $authRules = array(
-        'email' => 'required|email',
+        'username' => 'required',
         'password' => 'required'
     );
 } 
