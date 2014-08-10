@@ -6,18 +6,19 @@
  * Time: 11:06 PM
  */
 namespace Acme\Services;
-use Acme\Exceptions\ValidationException;
+
 use Acme\Validators\CoinsValidator;
-
-namespace Acme\Services;
-
 
 class CoinsService {
 
-    protected $validator;
-    public function __construct(CoinsValidator $validator)
+
+    /**
+     * @var \Acme\Validators\CoinsValidator
+     */
+    private $validator;
+
+    function __construct(CoinsValidator $validator)
     {
         $this->validator = $validator;
     }
-
-} 
+}

@@ -4,7 +4,8 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "laravel/framework": "4.2.*"
+        "laravel/framework": "4.2.*",
+        "barryvdh/laravel-ide-helper": "1.*"
     },
     "autoload": {
         "classmap": [
@@ -15,8 +16,8 @@
             "app/database/seeds",
             "app/tests/TestCase.php"
         ],
-        "psr-0": {
-            "Acme": "app/"
+        "psr-4": {
+            "Acme\\": "app/"
         }
     },
     "scripts": {
